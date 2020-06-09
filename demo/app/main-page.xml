@@ -1,6 +1,14 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
   xmlns:ui="nativescript-base64">
   <StackLayout class="p-20">
-    <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Label text="Plaintext" class="t-20 text-center c-black" textWrap="true"/>
+    <TextView text="Plaintext" id="plaintext" />
+    <Label text="Base64" class="t-20 text-center c-black" textWrap="true"/>
+    <TextView text="Base64" id="base64" />
+    <Label text="Base64Url" class="t-20 text-center c-black" textWrap="true"/>
+    <TextView text="Base64Url" id="base64url" />
+    <Button text="Encode" tap="{{ encode }}" />
+    <Button text="Decode from Base64" tap="{{ decodeBase64 }}" />
+    <Button text="Decode from Base64Url" tap="{{ decodeBase64Url }}" />
   </StackLayout>
 </Page>

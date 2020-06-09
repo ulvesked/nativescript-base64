@@ -1,28 +1,14 @@
-import { Observable } from 'tns-core-modules/data/observable';
-import * as app from 'tns-core-modules/application';
-import * as dialogs from 'tns-core-modules/ui/dialogs';
-
-export class Common extends Observable {
-  public message: string;
-
-  constructor() {
-    super();
-    this.message = Utils.SUCCESS_MSG();
-  }
-
-  public greet() {
-    return "Hello, NS";
-  }
+export function base64UrlToBase64(input: string) {
+    console.log({ len: input.length, mod: input.length % 4 });
+    let padLength = input.length % 4;
+    return input.replace(/\-/g, '+').replace(/_/g, '/') + ("=".repeat(4 - (input.length % 4)));
 }
-
-export class Utils {
-  public static SUCCESS_MSG(): string {
-    let msg = `Your plugin is working on ${app.android ? 'Android' : 'iOS'}.`;
-
-    setTimeout(() => {
-      dialogs.alert(`${msg} For real. It's really working :)`).then(() => console.log(`Dialog closed.`));
-    }, 2000);
-
-    return msg;
-  }
+export function base64ToBase64Url(input: string) {
+    return input.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+}
+export interface Base64Options {
+    lineLength?: 64 | 76;
+    lineFeedCR?: boolean;
+    lineFeedLF?: boolean;
+    format?: "base64" | "base64url";
 }
