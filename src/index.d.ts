@@ -6,13 +6,17 @@ export interface Base64Options {
     lineFeedLF?: boolean;
     format?: "base64" | "base64url";
 }
-export declare function encode(data: string): any;
-export declare function encode(data: string, options: Base64Options): any;
-export declare function encode(data: string, format: "base64" | "base64url"): any;
-export declare function encode(data: string, format: "base64" | "base64url", options: Base64Options): any;
+export declare function encode(data: string | ArrayBuffer): any;
+export declare function encode(data: string | ArrayBuffer, options: Base64Options): any;
+export declare function encode(data: string | ArrayBuffer, format: "base64" | "base64url"): any;
+export declare function encode(data: string | ArrayBuffer, format: "base64" | "base64url", options: Base64Options): any;
 export declare function decode(data: string): any;
 export declare function decode(data: string, options: Base64Options): any;
 export declare function decode(data: string, format: "base64" | "base64url"): any;
 export declare function decode(data: string, format: "base64" | "base64url", options: Base64Options): any;
+export declare function decodeToArrayBuffer(data: string);
+export declare function decodeToArrayBuffer(data: string, options: Base64Options);
+export declare function decodeToArrayBuffer(data: string, format: "base64" | "base64url");
+export declare function decodeToArrayBuffer(data: string, format: "base64" | "base64url", options: Base64Options);
 export declare function urlEncode(data: string, options?: Base64Options): any;
 export declare function urlDecode(data: string, options?: Base64Options): any;

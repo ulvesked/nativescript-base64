@@ -1,6 +1,6 @@
 {
     "name": "nativescript-base64",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Your awesome NativeScript plugin.",
     "main": "base64",
     "typings": "index.d.ts",

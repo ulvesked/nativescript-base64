@@ -7,11 +7,11 @@ function nsStringToString(nsstring: NSString) {
 }
 import { base64ToBase64Url, base64UrlToBase64, Base64Options } from "./base64.common";
 export { base64ToBase64Url, base64UrlToBase64, Base64Options };
-export function encode(data: string);
-export function encode(data: string, options: Base64Options);
-export function encode(data: string, format: "base64" | "base64url");
-export function encode(data: string, format: "base64" | "base64url", options: Base64Options);
-export function encode(data: string, arg1?, arg2?): string {
+export function encode(data: string | ArrayBuffer);
+export function encode(data: string | ArrayBuffer, options: Base64Options);
+export function encode(data: string | ArrayBuffer, format: "base64" | "base64url");
+export function encode(data: string | ArrayBuffer, format: "base64" | "base64url", options: Base64Options);
+export function encode(data: string | ArrayBuffer, arg1?, arg2?): string {
     let options: Base64Options;
     if (typeof(arg1) === 'string') {
         options = arg2 || {};
@@ -35,7 +35,17 @@ export function encode(data: string, arg1?, arg2?): string {
                 opts = opts | NSDataBase64EncodingOptions.EncodingEndLineWithLineFeed;
         }
     }
-    let result = stringToNSData(data).base64EncodedStringWithOptions(opts);
+    let nsdata: NSData;
+    if (data instanceof ArrayBuffer) {
+        nsdata = NSData.dataWithData(<any>data);
+    } 
+    else if (typeof data == "string") {
+        nsdata = stringToNSData(data);
+    }
+    else {
+        return;   
+    }
+    let result = nsdata.base64EncodedStringWithOptions(opts);
     if (options && options.format === "base64url") {
         result = base64ToBase64Url(result);
     }
@@ -46,6 +56,10 @@ export function decode(data: string, options: Base64Options);
 export function decode(data: string, format: "base64" | "base64url");
 export function decode(data: string, format: "base64" | "base64url", options: Base64Options);
 export function decode(data: string, arg1?, arg2?): string {
+    const nsdata = decodeToNSData(data, arg1, arg2);
+    return nsStringToString(NSString.alloc().initWithDataEncoding(nsdata, NSUTF8StringEncoding));
+}
+function decodeToNSData(data: string, arg1?, arg2?): NSData {
     let options: Base64Options;
     if (typeof(arg1) === 'string') {
         options = arg2 || {};
@@ -59,7 +73,15 @@ export function decode(data: string, arg1?, arg2?): string {
         data = base64UrlToBase64(data);
     }
     let nsdata = NSData.alloc().initWithBase64EncodedStringOptions(data, opts);
-    return nsStringToString(NSString.alloc().initWithDataEncoding(nsdata, NSUTF8StringEncoding));
+    return nsdata;
+}
+export function decodeToArrayBuffer(data: string);
+export function decodeToArrayBuffer(data: string, options: Base64Options);
+export function decodeToArrayBuffer(data: string, format: "base64" | "base64url");
+export function decodeToArrayBuffer(data: string, format: "base64" | "base64url", options: Base64Options);
+export function decodeToArrayBuffer(data: string, arg1?, arg2?): ArrayBuffer {
+    let nsdata = decodeToNSData(data, arg1, arg2);
+    return interop.bufferFromData(nsdata);
 }
 export function urlEncode(data: string, options?: Base64Options) {
     return encode(data, "base64url", options);
