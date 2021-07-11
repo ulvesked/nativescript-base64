@@ -21,7 +21,8 @@
         "noFallthroughCasesInSwitch": true
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "nativescript.config.ts"
     ],
     "compileOnSave": false
 }
