@@ -1,4 +1,4 @@
-//import { NativeScriptConfig } from '@nativescript/core';
+import { NativeScriptConfig } from '@nativescript/core';
 
 export default {
   id: 'org.nativescript.plugin.base64',
@@ -8,4 +8,4 @@ export default {
     v8Flags: '--expose_gc',
     markingMode: 'none'
   }
-};
+} as NativeScriptConfig;
