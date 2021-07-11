@@ -1,13 +1,13 @@
 {
     "name": "nativescript-base64",
-    "version": "1.0.1",
-    "description": "Your awesome NativeScript plugin.",
+    "version": "1.2.0",
+    "description": "NativeScript plugin for encoding and decoding base 64.",
     "main": "base64",
     "typings": "index.d.ts",
     "nativescript": {
         "platforms": {
-            "android": "4.0.0",
-            "ios": "4.0.0"
+            "android": "8.0.0",
+            "ios": "8.0.0"
         }
     },
     "scripts": {
@@ -34,8 +34,8 @@
         "iOS"
     ],
     "author": {
-        "name": "Your Name",
-        "email": "youremail@yourdomain.com"
+        "name": "Anders Knutsson",
+        "email": "aknutsson@outlook.com"
     },
     "bugs": {
         "url": "https://github.com/ulvesked/nativescript-base64/issues"
