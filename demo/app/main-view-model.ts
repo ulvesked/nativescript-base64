@@ -1,6 +1,5 @@
-import { Observable } from '@nativescript/core';
+import { getViewById, Observable } from '@nativescript/core'
 import * as base64 from 'nativescript-base64';
-import { getViewById } from 'tns-core-modules/ui/page/page';
 
 export class HelloWorldModel extends Observable {
  
