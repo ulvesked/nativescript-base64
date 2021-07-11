@@ -43,7 +43,7 @@ export function encode(data: string | ArrayBuffer, arg1?, arg2?): string {
         nsdata = stringToNSData(data);
     }
     else {
-        return;   
+        return undefined;   
     }
     let result = nsdata.base64EncodedStringWithOptions(opts);
     if (options && options.format === "base64url") {
