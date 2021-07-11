@@ -1,4 +1,4 @@
-/// <reference path="node_modules/tns-platform-declarations/android/android-platform-28.d.ts" />
+/// <reference path="node_modules/@nativescript/types/android-platform-28.d.ts" />
 
 
 import { base64ToBase64Url, base64UrlToBase64, Base64Options } from "./base64.common";

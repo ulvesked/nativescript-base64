@@ -1,3 +1,4 @@
+/// <reference path="./node_modules/@nativescript/types/ios.d.ts" />
 
 function stringToNSData(data: string) {
     return NSString.stringWithString(data).dataUsingEncoding(NSUTF8StringEncoding);
