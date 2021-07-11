@@ -1,4 +1,4 @@
-import { Observable } from 'tns-core-modules/data/observable';
+import { Observable } from '@nativescript/core';
 import * as base64 from 'nativescript-base64';
 import { getViewById } from 'tns-core-modules/ui/page/page';
 
